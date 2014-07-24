@@ -1,5 +1,5 @@
-/*    
- *  <one line to give the program's name and a brief idea of what it does.>
+/*
+ *  Test for the Geometry Class
  *  Copyright (C) <year>  <name of author>
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -15,14 +15,34 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.example
+package uk.ac.ed.inf.mois.karr
 
-import uk.ac.ed.inf.mois.{Model, Process}
+import org.scalatest.{FlatSpec, Matchers}
+import org.scalactic.TolerantNumerics
 
-class Example extends Process("example") {
-  def step(t: Double, tau: Double) {}
-}
+import uk.ac.ed.inf.mois.karr.Geometry
 
-class ExampleModel extends Model {
-  val process = new Example
+class GeometryTest extends FlatSpec with Matchers {
+  "geometry" should "calculate volume" in {
+
+    // Use approximate equality in `should equal`
+    val precision = 1e-4
+    implicit val doubleEquality =
+      TolerantNumerics.tolerantDoubleEquality(precision)
+
+    class Proc extends Geometry {
+      val name = "GeometryTest"
+      def step(t: Double, tau: Double) {}
+    }
+      
+    val p = new Proc
+    import p._
+
+    m := 1.0
+    rho := 2.0
+
+    p(0,0)
+
+    V.value should equal (0.5)
+  }
 }
