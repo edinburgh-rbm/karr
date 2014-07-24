@@ -15,7 +15,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package uk.ac.ed.inf.mois.karr
+package uk.ac.ed.inf.mois.karr.test
 
 import org.scalatest.{FlatSpec, Matchers}
 import org.scalactic.TolerantNumerics
