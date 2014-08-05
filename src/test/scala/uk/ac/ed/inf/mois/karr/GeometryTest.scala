@@ -32,9 +32,8 @@ class GeometryTest extends FlatSpec with Matchers {
 
     class Proc extends Geometry {
       val name = "GeometryTest"
-      def step(t: Double, tau: Double) {}
     }
-      
+
     val p = new Proc
     import p._
 
